@@ -4,7 +4,7 @@
 #pragma warning(disable:4996)
 int board[6][7], row[6];
 
-bool checkName(char* name) { // SARA'S METHOD
+bool CheckName(char* name) { // SARA'S METHOD
     // ADD REMOVE THE SPACES AND REMOVE THE NEXT LINE
     for (int i = 0; i < 40; i++)
         if (name[i] == '\n') {
@@ -50,13 +50,13 @@ int main() {
     char name2[40];
     printf("Enter the first name:");
     fgets(name1, 20, stdin);
-    while (!checkName(name1)) {
+    while (!CheckName(name1)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
         scanf("%[^\n]%c",name1);
     }
     printf("Enter the second name:"); // WHAT IF SAME NAME
     fgets(name2, 20, stdin);
-    while (!checkName(name2)) {
+    while (!CheckName(name2)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
         scanf("%[^\n]%c", name2);
     }
