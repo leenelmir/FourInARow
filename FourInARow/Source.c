@@ -30,7 +30,25 @@ bool checkMove(int tempCol, int* row) { // board is NxN, row is N
 
 }
 
-void printBoard() { printf("PRINTING BOARD HERE\n");} // AHMAD'S METHOD
+void printboard() {
+
+    printf("---------------\n");
+        
+        for (int i = 0; i < 6; i++)
+        {
+           printf("|");
+            for (int j = 0; j < 7; j++)
+            {
+                printf("%d" ,board[i][j]);
+                printf("|");
+            }
+            printf("\n");
+            
+        }
+
+    printf("---------------\n");
+
+}
 
 bool checkWin() { return false; } // KARIM'S METHOD
 
