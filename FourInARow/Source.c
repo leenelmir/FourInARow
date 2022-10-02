@@ -79,6 +79,17 @@ int main() {
         scanf("%[^\n]%c", name2);
     }
 
+     
+        
+    for (int i = 0; i < 6; i++)           // Initially fills the board with 0s
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                board[i][j] = 0;
+            }
+        }
+
+    
     printf("Current Board: \n");
     printBoard();
     printf("\n");
