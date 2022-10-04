@@ -4,6 +4,18 @@
 #pragma warning(disable:4996)
 int board[6][7], row[6];
 
+bool checkEmptyScanner(char* name) { // CHECK WHETHER SCANNER IS EMPTY, IF EMPTY, REMOVE \n
+
+for (int i = 0; i<21; i++){
+    if (name[i] == '\n'){
+    name[i] = '\0';
+    return true;
+    }
+}
+return false;
+
+}
+
 bool checkSpace(char* name){
 
 for (int i = 0; i<21; i++)
@@ -31,7 +43,7 @@ bool checkMove(int tempCol, int* row) { // board is NxN, row is N
 
 }
 
-void printboard() {
+void printBoard() {
 
     printf("---------------\n");
         
@@ -67,17 +79,29 @@ int main() {
 	/** ASSIGN NAMES AND PLAYERS**/
     char name1[21];
     char name2[21];
+    char c;
+    printf("ENTER PLAYER NAMES (ONLY FIRST 20 CHARACTERS WILL BE READ): \n");
     printf("Enter the first name:");
     fgets(name1, 21, stdin);
-    while (!CheckSpace(name1)) {
+    if (!checkEmptyScanner(name1))
+        while ((c = getchar())!= '\n') {}
+
+    while (!checkSpace(name1)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
         fgets(name1, 21, stdin);
+        if (!checkEmptyScanner(name1))
+            while ((c = getchar()) != '\n') {}
+
     }
     printf("Enter the second name:"); // WHAT IF SAME NAME
     fgets(name2, 21, stdin);
-    while (!CheckSpace(name2)) {
+    if (!checkEmptyScanner(name2))
+        while ((c = getchar())!= '\n') {}
+    while (!checkSpace(name2)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
         fgets(name2, 21, stdin);
+        if (!checkEmptyScanner(name2))
+            while ((c = getchar()) != '\n') {}
     }
 
      
