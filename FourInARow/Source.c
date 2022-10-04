@@ -4,14 +4,15 @@
 #pragma warning(disable:4996)
 int board[6][7], row[6];
 
-bool CheckName(char* name) { // SARA'S METHOD
-    // ADD REMOVE THE SPACES AND REMOVE THE NEXT LINE
-    for (int i = 0; i < 40; i++)
-        if (name[i] == '\n') {
-            name[i] = '\0';
-            break;
-        }
-    return true;
+bool checkSpace(char* name){
+
+for (int i = 0; i<21; i++)
+if (name[i] == ' ')
+ return false;
+
+ return true;
+
+
 }
 
 bool checkMove(int tempCol, int* row) { // board is NxN, row is N
@@ -64,19 +65,19 @@ int main() {
         row[i] = 0;
 
 	/** ASSIGN NAMES AND PLAYERS**/
-    char name1[40];
-    char name2[40];
+    char name1[21];
+    char name2[21];
     printf("Enter the first name:");
-    fgets(name1, 20, stdin);
-    while (!CheckName(name1)) {
+    fgets(name1, 21, stdin);
+    while (!CheckSpace(name1)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
-        scanf("%[^\n]%c",name1);
+        fgets(name1, 21, stdin);
     }
     printf("Enter the second name:"); // WHAT IF SAME NAME
-    fgets(name2, 20, stdin);
-    while (!CheckName(name2)) {
+    fgets(name2, 21, stdin);
+    while (!CheckSpace(name2)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
-        scanf("%[^\n]%c", name2);
+        fgets(name2, 21, stdin);
     }
 
      
