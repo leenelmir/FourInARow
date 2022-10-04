@@ -63,7 +63,44 @@ void printBoard() {
 
 }
 
-bool checkWin() { return false; } // KARIM'S METHOD
+bool checkWin(int player, int board[6][7]) {
+	//check for 4 horizontal
+	int i, j;
+	for (i = 0; i < 6; i++) {
+		for (j = 0; j < 7-3; j++) {
+			if (board[i][j] == player && board[i][j + 1] == player && board[i][j + 2] == player && board[i][j + 3] == player) {
+				return true;
+			}
+		}
+	}
+	//check for 4 vertical
+	for (i = 0; i < 6 - 3; i++) {
+		for (j = 0; j < 7; j++) {
+			if (board[i][j] == player && board[i + 1][j] == player && board[i + 2][j] == player && board[i + 3][j] == player) {
+				return true;
+			}
+		}
+	}
+    //check up diagonal
+		for(i = 3; i < 6; i++){
+			for(j = 0; j < 7 - 3; j++){
+				if (board[i][j] == player   && board[i-1][j+1] == player && board[i-2][j+2] == player && board[i-3][j+3] == player)
+                {
+					return true;
+				}
+			}
+		}
+		//check down diagonal
+		for(i = 0; i < sizeof(board)/sizeof(board[0]) - 3; i++){
+			for(j = 0; j < sizeof(board[0]) - 3; j++){
+				if (board[i][j] == player   && board[i+1][j+1] == player && board[i+2][j+2] == player && board[i+3][j+3] == player)
+                {
+                    return true;
+                }
+				}
+			}
+		return false;
+	}
 
 int main() {
 
@@ -147,7 +184,7 @@ int main() {
         printf("%d ", board[row[tempCol]][tempCol]);
         row[tempCol]++;
 
-        if (checkWin()) {
+        if (checkWin(currentToken,board)) {
             winner = currentToken;
             break;
         }
