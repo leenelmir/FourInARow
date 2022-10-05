@@ -175,7 +175,7 @@ int main() {
         currentToken = (i % 2 == 1) ? 1 : 2; // if odd then player 1
         currentPlayer = (i % 2 == 1) ? player1 : player2;
         printf("%s's turn \n", currentPlayer);
-        printf("Input a column (ONLY FIRST CHARACTER WILL BE READ): ");
+        printf("Input a column from 1 to 6 (ONLY FIRST CHARACTER WILL BE READ): ");
         // HERE START THE TIMER
 
         int tempCol;
@@ -184,7 +184,7 @@ int main() {
 
         while (tempCol != -39 && (c=getchar()) != '\n') {}
         while (!checkValidMove(tempCol, row)){ // checks that column is within range and available
-             printf("TRY AGAIN: ");
+             printf("\nTRY AGAIN: ");
              tempCol = getchar() - 48 - 1;
              while (tempCol != -39 && (c=getchar()) != '\n') {}
             }
