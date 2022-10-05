@@ -27,20 +27,18 @@ if (name[i] == ' ')
 
 }
 
-bool checkMove(int tempCol, int* row) { // board is NxN, row is N
+bool checkValidMove(int tempCol, int* row){
+     if (tempCol < 0 || tempCol > 6) {
+            printf("ERROR: INVALID COLUMN CHOICE");
+            return false;
+        }
 
-    if (tempCol < 0 || tempCol > 6) {
-        printf("ERROR: INVALID COLUMN CHOICE \n CHOOSE AGAIN:");
-        return false;
-    }
+        if (row[tempCol] > 5) {
+            printf("ERROR: COLUMN IS FULL");
+            return false;
+        }
 
-    if (row[tempCol] > 5) {
-        printf("ERROR: COLUMN IS FULL \n CHOOSE AGAIN:");
-        return false;
-    }
-
-    return true;
-
+        return true;
 }
 
 void printBoard() {
@@ -125,6 +123,7 @@ int main() {
 
     while (!checkSpace(name1)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
+        resetName(name1); // RESETS THE STRING TO EMPTY
         fgets(name1, 21, stdin);
         if (!checkEmptyScanner(name1))
             while ((c = getchar()) != '\n') {}
@@ -136,6 +135,7 @@ int main() {
         while ((c = getchar())!= '\n') {}
     while (!checkSpace(name2)) {
         printf("ERROR: NAME CONTAINS SPACE\nTRY AGAIN: ");
+        resetName(name2);
         fgets(name2, 21, stdin);
         if (!checkEmptyScanner(name2))
             while ((c = getchar()) != '\n') {}
@@ -166,28 +166,34 @@ int main() {
     char* currentPlayer;
 
     /* START GAME (42 TURNS)*/
+
     for (int i = 1; i <= 42; i++) {
         currentToken = (i % 2 == 1) ? 1 : 2; // if odd then player 1
         currentPlayer = (i % 2 == 1) ? player1 : player2;
         printf("%s's turn \n", currentPlayer);
-        printf("Input a column : ");
+        printf("Input a column (ONLY FIRST CHARACTER WILL BE READ): ");
         // HERE START THE TIMER
-        do {
-            // scanf("%[^\n]%c", currentCol); // ASK DR
-            scanf("%d", &tempCol);
-            tempCol--;
-        } while (!checkMove(tempCol, row));
+
+        int tempCol;
+        char c;
+        tempCol = getchar() - 48 - 1; // casts ASCII value to (-48) then converts to zero-index (-1)
+
+        while (tempCol != -39 && (c=getchar()) != '\n') {}
+        while (!checkValidMove(tempCol, row)){ // checks that column is within range and available
+             printf("TRY AGAIN: ");
+             tempCol = getchar() - 48 - 1;
+             while (tempCol != -39 && (c=getchar()) != '\n') {}
+            }
         // HERE END THE TIMER AND ADD ACCORDINGLY
 
         // update board
-        board[row[tempCol]][tempCol] = currentToken;
-        printf("%d ", board[row[tempCol]][tempCol]);
+        board[6-row[tempCol]-1][tempCol] = currentToken;
         row[tempCol]++;
 
-        if (checkWin(currentToken,board)) {
-            winner = currentToken;
-            break;
-        }
+        //if (checkWin(currentToken,board)) {
+          //  winner = currentToken;
+            //break;
+        //}
 
         printBoard();
 
