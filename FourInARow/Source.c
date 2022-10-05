@@ -4,6 +4,10 @@
 #pragma warning(disable:4996)
 int board[6][7], row[6];
 
+void resetName(char* name){
+for (int i = 0; i < 21; i++)
+    name[i] = '-';
+}
 bool checkEmptyScanner(char* name) { // CHECK WHETHER SCANNER IS EMPTY, IF EMPTY, REMOVE \n
 
 for (int i = 0; i<21; i++){
