@@ -93,8 +93,8 @@ bool checkWin(int player, int board[6][7]) {
 			}
 		}
 		//check down diagonal
-		for(i = 0; i < sizeof(board)/sizeof(board[0]) - 3; i++){
-			for(j = 0; j < sizeof(board[0]) - 3; j++){
+		for(i = 0; i < 6 - 3; i++){
+			for(j = 0; j < 7 - 3; j++){
 				if (board[i][j] == player   && board[i+1][j+1] == player && board[i+2][j+2] == player && board[i+3][j+3] == player)
                 {
                     return true;
