@@ -1,0 +1,11 @@
+resetName LEEN
+
+checkEmptyScanner SARA
+
+checkSpace SARA
+
+checkValidMove LEEN
+
+printBoard AHMAD
+
+checkWin KARIM
