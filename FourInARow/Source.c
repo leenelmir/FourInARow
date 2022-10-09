@@ -4,7 +4,7 @@
 #pragma warning(disable:4996)
 int board[6][7], row[6];
 
-void resetName(char* name){
+void resetName(char* name){ //to avoid overwriting previous input when invalid input is inserted
 for (int i = 0; i < 21; i++)
     name[i] = '-';
 }
@@ -33,12 +33,12 @@ if (name[i] == ' ')
 
 bool checkValidMove(int tempCol, int* row){
      if (tempCol < 0 || tempCol > 6) {
-            printf("ERROR: INVALID COLUMN CHOICE");
+            printf("ERROR: INVALID COLUMN CHOICE\n");
             return false;
         }
 
         if (row[tempCol] > 5) {
-            printf("ERROR: COLUMN IS FULL");
+            printf("ERROR: COLUMN IS FULL\n");
             return false;
         }
 
@@ -202,7 +202,6 @@ int main() {
         printBoard();
 
     }
-
 
     /*END GAME : CHOOSE WINNER ACCORDINGLY*/
     if (winner != 0) {

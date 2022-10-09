@@ -1,11 +1,41 @@
-resetName LEEN
 
-checkEmptyScanner SARA
+PHASE 1 SPECS AND TEST CASES
 
-checkSpace SARA
+// METHOD 1 : void resetName(char* name) //
 
-checkValidMove LEEN
+REQUIRES:
+char array name is of length 21
 
-printBoard AHMAD
+EFFECTS:
+resets all values of char array to '-'.
 
-checkWin KARIM
+TEST CASES:
+a - resetName("\0\0\0...") : returns "-...---"
+b - resetName("---...---") : returns "-...---"
+Similarly, all cases return same array
+
+
+2- checkEmptyScanner SARA
+
+3- checkSpace SARA
+
+
+// METHOD 4: bool checkValidMove(int tempColumn, int* row) //
+
+REQUIRES:
+tempColumn is zero-indexed and is exactly one digit long
+
+EFFECTS:
+checks whether requested column insertion is valid; returns true if insertion
+is valid and false otherwise
+
+TEST CASES: (NOTE: checkValidMove is only called with int row[6])
+a- checkValidMove(a, row) : false for all  a < 0 || a > 6
+b- checkValidMove(b, row) but row[b] full (row[b]>5) : false for all 0 <= b <= 6
+c- checkValidMove(c, row) but row[c] available (row[b]<=5) : true for all 0 <= c <= 6
+d- row[b] < 0 : this is an impossible case since row[b] will always be incremented (by the code's logic)
+
+
+5- printBoard AHMAD
+
+6- checkWin KARIM
