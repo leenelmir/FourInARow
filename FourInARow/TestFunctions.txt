@@ -27,10 +27,6 @@ TEST CASES:
 a- checkEmptyScanner(test) : false
 b- checkEmptyScanner(yesjfvbwrksgjgiwsbjfilwrkgklg) : true
 
-
-
-2- checkEmptyScanner SARA
-
 // METHOD 3: bool checkSpace (char* name) //
 
 REQUIRES: 
