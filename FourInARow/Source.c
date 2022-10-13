@@ -194,10 +194,10 @@ int main() {
         board[6-row[tempCol]-1][tempCol] = currentToken;
         row[tempCol]++;
 
-        //if (checkWin(currentToken,board)) {
-          //  winner = currentToken;
-            //break;
-        //}
+        if (checkWin(currentToken,board)) {
+           winner = currentToken;
+            break;
+        }
 
         printBoard();
 
