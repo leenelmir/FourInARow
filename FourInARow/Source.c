@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #pragma warning(disable:4996)
+
 int board[6][7], row[6];
 
 void resetName(char* name){ //to avoid overwriting previous input when invalid input is inserted
@@ -163,6 +165,9 @@ int main() {
     int coin = rand() % 2;
     char* player1 = (coin == 0) ? name1 : name2;
     char* player2 = (coin == 0) ? name2 : name1;
+    double total_t_1 = 0;
+    double total_t_2 = 0;                   //time for both players intially set to zero
+    clock_t start_t, end_t;
 
     printf("\nAfter flipping a coin, we have the following:\nPlayer1: %s\nPlayer2: %s\n\n", player1, player2);
     
@@ -172,12 +177,14 @@ int main() {
     /* START GAME (42 TURNS)*/
 
     for (int i = 1; i <= 42; i++) {
+
         currentToken = (i % 2 == 1) ? 1 : 2; // if odd then player 1
         currentPlayer = (i % 2 == 1) ? player1 : player2;
+    
         printf("%s's turn \n", currentPlayer);
         printf("Input a column from 1 to 7 (ONLY FIRST CHARACTER WILL BE READ): ");
         // HERE START THE TIMER
-
+        start_t = clock();
         int tempCol;
         char c;
         tempCol = getchar() - 48 - 1; // casts ASCII value to (-48) then converts to zero-index (-1)
@@ -189,7 +196,13 @@ int main() {
              while (tempCol != -39 && (c=getchar()) != '\n') {}
             }
         // HERE END THE TIMER AND ADD ACCORDINGLY
-
+        end_t = clock();
+        
+        if(currentToken == 1)           //then it is currently player1
+            total_t_1 += (double) (end_t - start_t);
+            
+        else
+            total_t_2 += (double) (end_t - start_t);
         // update board
         board[6-row[tempCol]-1][tempCol] = currentToken;
         row[tempCol]++;
@@ -211,7 +224,13 @@ int main() {
 
     else {
         printf("It's a tie!\n"); // HERE CHECK WHICH TIMER IS FASTER AND CHOOSE ACCORDINGLY
-        printf("%s wins because of faster gameplay.", player1);
+
+        if(total_t_1 > total_t_2)
+            printf("%s wins because of faster gameplay.\nTime taken by player1: %f\nTime taken by player2: %f", player1, total_t_1, total_t_2);
+        else if(total_t_2 > total_t_1)
+            printf("%s wins because of faster gameplay.\nTime taken by player1: %f\nTime taken by player2: %f", player2, total_t_1, total_t_2);
+        else
+            printf("Both players tied again in time (which is impressive).\nBoth players time: %f", total_t_1);
     }
 
 
