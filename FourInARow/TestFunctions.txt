@@ -14,11 +14,38 @@ a - resetName("\0\0\0...") : returns "-...---"
 b - resetName("---...---") : returns "-...---"
 Similarly, all cases return same array
 
+// METHOD 2: bool checkEmptyScanner(char* name)
+
+REQUIRES:
+char array name is of length 21 
+
+EFFECTS:
+checks whether scanner is empty, if it is, it removes /n. If user wrote 35 chars,
+the method will collect the remaining 15 (max 20 chars) so next time we scan we have an empty scanner
+
+TEST CASES:
+a- checkEmptyScanner(test) : false
+b- checkEmptyScanner(yesjfvbwrksgjgiwsbjfilwrkgklg) : true
+
+
 
 2- checkEmptyScanner SARA
 
-3- checkSpace SARA
+// METHOD 3: bool checkSpace (char* name) //
 
+REQUIRES: 
+char array name is of length 21
+
+EFFECTS: 
+checks whether required name is valid (has no spaces), returns true if name has no spaces 
+and false otherwise
+
+TEST CASES: 
+a- checkSpace(sara) : returns true
+b- checkSpace(sa ra): returns false
+c- checkSpace() : returns false
+d- checkSpace(s): returns true
+e- checkSpace(=): returns true since '=' is a char 
 
 // METHOD 4: bool checkValidMove(int tempColumn, int* row) //
 
