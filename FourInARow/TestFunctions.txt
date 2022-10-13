@@ -61,4 +61,12 @@ d- row[b] < 0 : this is an impossible case since row[b] will always be increment
 
 5- printBoard AHMAD
 
-6- checkWin KARIM
+6- // Method 6: checkWin(int player, int board[6][7]) //
+
+Requires: A 2d array of integers and the current player
+Effects: Returns true if a winner is found and false otherwise.
+
+Test Cases:
+1- If the game hasn't started, it will return false (No winner yet)
+2- If the game is still ongoing, it will return false
+3- If we find 4 consecutive tokens either vertically, horizontally, or diagonally, it will return true (Winner found)
