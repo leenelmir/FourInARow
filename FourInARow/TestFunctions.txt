@@ -59,7 +59,18 @@ c- checkValidMove(c, row) but row[c] available (row[b]<=5) : true for all 0 <= c
 d- row[b] < 0 : this is an impossible case since row[b] will always be incremented (by the code's logic)
 
 
-5- printBoard AHMAD
+5- // Method 5: printBoard()
+
+REQUIRES:
+nothing
+
+EFFECTS:
+Prints the current state of the board
+
+TEST CASES:
+1- If the game has just started, it will print out the board that was initially filled with zeros (board is a global variable).
+2- If we are during the game, it will print out the current state of the board after each move.
+
 
 6- // Method 6: checkWin(int player, int board[6][7]) //
 
