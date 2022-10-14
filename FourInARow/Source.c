@@ -188,7 +188,7 @@ int main() {
         printf("%s's turn \n", currentPlayer);
         printf("Input a column from 1 to 7 (ONLY FIRST CHARACTER WILL BE READ): ");
         // HERE START THE TIMER
-        clock_settime(CLOCK_REALTIME, &timer);
+        clock_gettime(CLOCK_REALTIME, &timer);
         current = timer.tv_sec;
         int tempCol;
         char c;
@@ -201,15 +201,17 @@ int main() {
              while (tempCol != -39 && (c=getchar()) != '\n') {}
             }
         // HERE END THE TIMER AND ADD ACCORDINGLY
-        clock_settime(CLOCK_REALTIME, &timer);
+        clock_gettime(CLOCK_REALTIME, &timer);
         current2 = timer.tv_sec;
         total = current2 - current;
         
-        if(currentToken == 1)           //then it is currently player1
+        if(currentToken == 1)          //then it is currently player1
             total_t_1 += total;
-        
+            
         else
             total_t_2 += total;
+            
+        
         
         // update board
         board[6-row[tempCol]-1][tempCol] = currentToken;
