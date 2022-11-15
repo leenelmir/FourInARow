@@ -1,4 +1,9 @@
-int findClosestWin(int board[6][7], int count, int steps) { 
+int findClosestWin(int board[6][7], int steps) {
+
+    int count = 0; // find the number of moves already made
+        for (int i = 0; i < 6; i++)
+            for (int j = 0; j < 7; j++)
+                count = count + (board[i][j] > 0 ? 1 : 0);
 
     int min = steps + 1;
     int*** queue = (int***)(malloc(5000*sizeof(int**))); // no more than 7^4 scenarios // steps cannot exceed 4
