@@ -91,5 +91,13 @@ int findClosestWin(int board[6][7], int steps) {
 
     }
 
+      // deallocate space for queue
+        for (int i = 0; i < 2500; i++)
+            if (queue[i] != NULL)
+                   for (int j = 0; j < 6; j++)
+                       free(queue[i][j]);
+
+       free(queue);
+
     return min;
 }
