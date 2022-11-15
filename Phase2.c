@@ -1,9 +1,10 @@
-int findClosestWin(int board[6][7], int steps) {
 
-    int count = 0; // find the number of moves already made
-        for (int i = 0; i < 6; i++)
-            for (int j = 0; j < 7; j++)
-                count = count + (board[i][j] > 0 ? 1 : 0);
+int findClosestWin(int board[6][7], int steps, int player) { // find closest win/loss for the PLAYER
+    
+    int count = 0;
+    for (int i = 0; i < 6; i++)
+        for (int j = 0; j < 7; j++)
+            count = count + ((board[i][j] == 1 || board[i][j] == 2) ? 1 : 0);
 
     int min = steps + 1;
     int*** queue = (int***)(malloc(5000*sizeof(int**))); // no more than 7^4 scenarios // steps cannot exceed 4
@@ -57,15 +58,18 @@ int findClosestWin(int board[6][7], int steps) {
             break;
 
         if (checkWin(current, 1)) {
+
             if (abs(min) > numOfMoves)
-                min = numOfMoves;	// min is the number of moves till we reach this win  
-            continue;
+                min = (player == 1 ? 1 : -1) * numOfMoves;
+
+                continue;
         }
        
         if (checkWin(current, 2))
         {
-            if (abs(min) > numOfMoves)
-                min = -numOfMoves;
+            if (abs(min) > numOfMoves) 
+                min = (player == 1 ? -1 : 1) * numOfMoves;
+
             continue;
         }
       
@@ -91,13 +95,13 @@ int findClosestWin(int board[6][7], int steps) {
 
     }
 
-      // deallocate space for queue
-        for (int i = 0; i < 2500; i++)
-            if (queue[i] != NULL)
-                   for (int j = 0; j < 6; j++)
-                       free(queue[i][j]);
-
-       free(queue);
+    // deallocate space for queue
+    for (int i = 0; i < 2500; i++)
+        if (queue[i] != NULL)
+               for (int j = 0; j < 6; j++)
+                   free(queue[i][j]);
+    
+   free(queue); 
 
     return min;
 }
