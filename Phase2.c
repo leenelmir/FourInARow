@@ -118,3 +118,35 @@ int findClosestWin(int** board, int steps, int player) { // find closest win/los
 
     return minSteps;
 }
+
+int *tryNextMove(int **board, int player)
+{
+    int indices[7] = {6, 6, 6, 6, 6, 6, 6};
+    // storing the indeces of which clmn we can insert in, if 6->
+    for (int i = 6; i > 0; i--)
+    {
+        for (int j = 7; j > 0; j--)
+        {
+            if (board[i][j] == 0 && indices[i] == 6)
+            {
+                indices[i] = j;
+            }
+        }
+    }
+    int nextMoves[7] = {101, 101, 101, 101, 101, 101, 101};
+    // nextMoves[i] will store the number of closest win/loss if you inserted the move at column i
+    // it should store 101 if that column is full and you cannot insert at that column
+    for (int k = 0; k < 7; k++)
+    {
+        if (indices[k] != 6)
+        {
+            nextMoves[k] = findClosestWin(board, 1, player);
+        }
+    }
+    return nextMoves;
+    /* for each
+        column you CAN insert at(not full), insert that move into a temporary double array and call the findClosestWin() function on this temp board
+                                                    the returned value will tell you what is the closest win /
+                                                loss after inserting at the column you inserted at
+                                                    so store that value at nextMoves[i] where i = column number - 1 then return nextMoves store that returned*/
+}
