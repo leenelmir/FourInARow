@@ -284,11 +284,25 @@ int* tryNextMove(int** board, int player) {
 int columnPicker(int arr[])
 {
     int lowest = arr[0];
-    int numberOfUpdates = 0;
-
+    int notallsame = 0;
+    
+    for(int i = 0; i < 6; i++)
+    {
+        if(arr[i] != arr[i+1])
+        {
+            notallsame = 1;
+        }
+    }
+    
     if (lowest == 0)
         return 0;
 
+    if(notallsame == 0)
+    {
+        int randomIndex = rand() % 7;
+        return randomIndex;
+    }
+    
     int currentLowestIndex = 0;
     for (int i = 1; i < 7; i++)
     {
@@ -298,38 +312,36 @@ int columnPicker(int arr[])
             {
                 lowest = arr[i];
                 currentLowestIndex = i;
-                numberOfUpdates++;
+                
             }
 
             else if (arr[i] >= 0 && arr[i] < lowest)
             {
                 lowest = arr[i];
                 currentLowestIndex = i;
-                numberOfUpdates++;
+                
             }
 
-            else if (arr[i] < 0 && lowest < 0 && arr[i] < lowest)
+            else if (arr[i] < 0 && lowest < 0)
             {
                 if (arr[i] < lowest)
                 {
                     lowest = arr[i];
                     currentLowestIndex = i;
-                    numberOfUpdates++;
                 }
             }
             else if (arr[i] < 0 && lowest > 100)
             {
                 lowest = arr[i];
                 currentLowestIndex = i;
-                numberOfUpdates++;
             }
         }
     }
-    if (numberOfUpdates != 0)
-        return currentLowestIndex;
+    
+    return currentLowestIndex;
+    
 
-    int randomIndex = rand() % 7;
-    return randomIndex;
+    
 
 }
 
