@@ -299,6 +299,7 @@ int columnPicker(int arr[])
 
     if(notallsame == 0)
     {
+        srand(time(0));
         int randomIndex = rand() % 7;
         return randomIndex;
     }
