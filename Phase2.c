@@ -405,7 +405,7 @@ int main() {
 
     }
 
-    printf("CHOOSE DIFFICULTY (0,1,2):  ");
+    printf("CHOOSE DIFFICULTY (0 for easy, 1 for medium, and 2 for hard):  ");
     difficulty = getchar() - 48; // casts ASCII value to int (-48) then converts to zero-index (-1)
   
     while (difficulty != -38 && (c = getchar()) != '\n') {}
@@ -415,7 +415,7 @@ int main() {
         while (difficulty != -38 && (c = getchar()) != '\n') {}
     }
 
-    printf("difficulty selected: %d\n", difficulty);
+    printf("Difficulty selected: %d\n", difficulty);
     printf("Current Board: \n");
     printBoard();
     printf("\n");
