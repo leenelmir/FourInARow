@@ -340,13 +340,13 @@ int makeMove(int** board) {
     
     int* nextMoves = tryNextMove(board, player); // try making FIRST MOVE at each column
    
-     for (int i = 0; i < 7; i++)
-        printf("%d ", nextMoves[i]);
+    // for (int i = 0; i < 7; i++)
+      //  printf("%d ", nextMoves[i]);
     
     int nextMove = columnPicker(nextMoves); // pick the best option from all of them 
     free(nextMoves);
     
-    printf("insert %d at column %d\n", player, nextMove); 
+   // printf("insert %d at column %d\n", player, nextMove); 
     
     return nextMove; // return the optimal choice of column
 }
