@@ -1,0 +1,47 @@
+Method 1: findClosestWin(int **board, int steps, int player)
+
+Requires: A 2D array of integers which is the board, an integer which is the number of steps made so far, and the current player we want to find the closest win for (the bot).
+Effects: Returns the number of steps the player is closest to winning.
+
+Test cases: 
+1- If we are closer to a win than a loss in the next 4 steps (or 2 or 3 depending on difficulty), the method will return a positive integer which is the amount of steps required to win.
+2- If we are closer to a loss than a win in the next 4 steps(or 2 or 3 depending on difficulty), the method will return a negative integer which is the amount of steps required to lose.
+3- If the next move is a winning move, the method will return 0
+4- If there is no win or loss in the next 4 steps (or 2 or 3 depending on difficulty) , the method will return 100.
+5- If implemented in easy mode, the method will only check for the next 2 step.
+6- If implemented in medium mode, the method will check for the next 3 steps.
+7- If implemented in hard mode, the method will check for the next 4 steps.
+
+
+Method 2: columnPicker(int arr[])
+
+Requires: an array of integers
+Effects: returns the optimal column number choice.
+
+Test cases:
+1- If the lowest element in the array is 0, we pick that index.
+2- If their exists a positive integer < 101 in the array and no 0, we pick the index of the lowest positive integer < 101
+3- If their only exists negative numbers in the array, we pick the index of the smallest negative integer.
+4- If the current column is full, the output at that index will be 101.
+
+Method 3: *tryNextMove(int **board, int player)
+
+Requires: A 2D array of integers which is the board, the bot number which is either player 1 or 2.
+Effects: Returns an array of integers that includes the result of the findClosestWin function in each column.
+
+Test cases:
+1- In each column, if the column is not full, it will call the findClosestWin function.
+
+Method 4: makeMove(int** board)
+
+Requires: A 2D array of integers which is the board.
+Effects: Returns the next move.
+
+Method 5: findBotRank(int** board)
+
+Requires: A 2D array which is the board.
+Effects: Returns the player number of the bot (Player 1 or 2)
+
+Test cases:
+1- If the number of 1's in the board is less than the number of 2's, return 1
+2- If the number of 2's in the board is less than the number of 1's, return 2
