@@ -1,6 +1,10 @@
+#include <cstdlib>
+
 int columnPicker(int arr[])
 {
     int lowest = arr[0];
+    int numberOfUpdates = 0;
+
     if (lowest == 0)
         return 0;
     
@@ -11,12 +15,14 @@ int columnPicker(int arr[])
         {
             lowest = arr[i];
             currentLowestIndex = i;
+            numberOfUpdates++;
         }
         
         else if (arr[i] >= 0 && arr[i] < lowest && arr[i] < 101)
         {
             lowest = arr[i];
             currentLowestIndex = i;
+            numberOfUpdates++;
         }
 
         else if (arr[i] < 0 && lowest < 0)
@@ -25,17 +31,23 @@ int columnPicker(int arr[])
             {
                 lowest = arr[i];
                 currentLowestIndex = i;
+                numberOfUpdates++;
             }
         }
         else if (arr[i] < 0 && lowest > 100)
         {
-        lowest = arr[i];
-        currentLowestIndex = i;
+            lowest = arr[i];
+            currentLowestIndex = i;
+            numberOfUpdates++;
         }
 
     }
+    
+    if(numberOfUpdates != 0)
+        return currentLowestIndex;
 
-    return currentLowestIndex;
+    int randomIndex = rand() % 7;
+    return randomIndex;
 
 }
 
