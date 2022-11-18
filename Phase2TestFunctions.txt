@@ -1,4 +1,4 @@
-Method 1: findClosestWin(int **board, int steps, int player)
+Method 1: int findClosestWin(int **board, int steps, int player)
 
 Requires: A 2D array of integers which is the board, an integer which is the number of steps made so far, and the current player we want to find the closest win for (the bot).
 Effects: Returns the number of steps the player is closest to winning.
@@ -13,7 +13,7 @@ Test cases:
 7- If implemented in hard mode, the method will check for the next 4 steps.
 
 
-Method 2: columnPicker(int arr[])
+Method 2: int columnPicker(int arr[])
 
 Requires: arr is of size 7, represeting the possible column indices to insert a move at. arr[i] stores the number of moves till the closest win/loss should the 
 bot insert at column i on the next move.
@@ -25,7 +25,7 @@ Test cases:
 3- If there only exists negative numbers in the array, we pick the index of the smallest negative integer.
 4- If the current column is full, the output at that index will be 101.
 
-Method 3: *tryNextMove(int **board, int player)
+Method 3: int* tryNextMove(int **board, int player)
 
 Requires: A 2D array of integers which is the board, the bot number which is either player 1 or 2.
 Effects: Returns an array of integers that includes the result of the findClosestWin function in each column.
@@ -33,12 +33,12 @@ Effects: Returns an array of integers that includes the result of the findCloses
 Test cases:
 1- In each column, if the column is not full, it will call the findClosestWin function.
 
-Method 4: makeMove(int** board)
+Method 4: int makeMove(int** board)
 
 Requires: A 2D array of integers which is the board.
 Effects: Returns the next move.
 
-Method 5: findBotRank(int** board)
+Method 5: int findBotRank(int** board)
 
 Requires: A 2D array which is the board.
 Effects: Returns the player number of the bot (Player 1 or 2)
