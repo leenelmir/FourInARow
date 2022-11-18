@@ -308,7 +308,7 @@ int columnPicker(int arr[])
                 numberOfUpdates++;
             }
 
-            else if (arr[i] < 0 && lowest < 0)
+            else if (arr[i] < 0 && lowest < 0 && arr[i] < lowest)
             {
                 if (arr[i] < lowest)
                 {
@@ -437,7 +437,7 @@ int main() {
         }
         
         else {
-        printf("Input a column from 1 to 7 (ONLY FIRST CHARACTER WILL BE READ): ");
+        printf("Input a column from 0 to 6 (ONLY FIRST CHARACTER WILL BE READ): ");
         // HERE START THE TIMER
         time(&start);
         char c;
