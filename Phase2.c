@@ -1,3 +1,44 @@
+int columnPicker(int arr[])
+{
+    int lowest = arr[0];
+    if (lowest == 0)
+        return 0;
+    
+    int currentLowestIndex = 0;
+    for (int i = 1; i < 7; i++)
+    {
+        if (arr[i] >= 0 && lowest < 0 && arr[i] < 101)
+        {
+            lowest = arr[i];
+            currentLowestIndex = i;
+        }
+        
+        else if (arr[i] >= 0 && arr[i] < lowest && arr[i] < 101)
+        {
+            lowest = arr[i];
+            currentLowestIndex = i;
+        }
+
+        else if (arr[i] < 0 && lowest < 0)
+        {
+            if(arr[i] < lowest)
+            {
+                lowest = arr[i];
+                currentLowestIndex = i;
+            }
+        }
+        else if (arr[i] < 0 && lowest > 100)
+        {
+        lowest = arr[i];
+        currentLowestIndex = i;
+        }
+
+    }
+
+    return currentLowestIndex;
+
+}
+
 int findClosestWin(int** board, int steps, int player) { // find closest win/loss for the PLAYER
 
     int count = 0;
