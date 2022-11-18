@@ -370,7 +370,8 @@ int makeMove(int** board) {
 int main() {
 
     /*Initialize BOARD and ROW*/
-
+    srand(time(NULL));
+    
     int n0[7] = { 0,0,0,0,0,0,0 };
     board[0] = n0;
     int n1[7] = { 0,0,0,0,0,0,0 };
