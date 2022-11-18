@@ -292,36 +292,38 @@ int columnPicker(int arr[])
     int currentLowestIndex = 0;
     for (int i = 1; i < 7; i++)
     {
-        if (arr[i] >= 0 && lowest < 0 && arr[i] < 101)
+        if(arr[i] != 101)
         {
-            lowest = arr[i];
-            currentLowestIndex = i;
-            numberOfUpdates++;
-        }
+            if (arr[i] >= 0 && lowest < 0)
+            {
+                lowest = arr[i];
+                currentLowestIndex = i;
+                numberOfUpdates++;
+            }
 
-        else if (arr[i] >= 0 && arr[i] < lowest && arr[i] < 101)
-        {
-            lowest = arr[i];
-            currentLowestIndex = i;
-            numberOfUpdates++;
-        }
+            else if (arr[i] >= 0 && arr[i] < lowest)
+            {
+                lowest = arr[i];
+                currentLowestIndex = i;
+                numberOfUpdates++;
+            }
 
-        else if (arr[i] < 0 && lowest < 0)
-        {
-            if (arr[i] < lowest)
+            else if (arr[i] < 0 && lowest < 0)
+            {
+                if (arr[i] < lowest)
+                {
+                    lowest = arr[i];
+                    currentLowestIndex = i;
+                    numberOfUpdates++;
+                }
+            }
+            else if (arr[i] < 0 && lowest > 100)
             {
                 lowest = arr[i];
                 currentLowestIndex = i;
                 numberOfUpdates++;
             }
         }
-        else if (arr[i] < 0 && lowest > 100)
-        {
-            lowest = arr[i];
-            currentLowestIndex = i;
-            numberOfUpdates++;
-        }
-
     }
     if (numberOfUpdates != 0)
         return currentLowestIndex;
